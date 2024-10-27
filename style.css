@@ -1,0 +1,11 @@
+/* styles.css */
+.blink {
+    animation: blink-animation 1s steps(2, start) infinite;
+    color: #ff0000; /* Change color if you want */
+}
+
+@keyframes blink-animation {
+    50% {
+        opacity: 0;
+    }
+}

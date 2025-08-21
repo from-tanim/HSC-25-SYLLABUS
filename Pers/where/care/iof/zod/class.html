@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown Preview</title>
+    <title>Class.md Preview</title>
     <style>
         * {
             box-sizing: border-box;
@@ -21,7 +21,7 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             background-color: white;
             border-radius: 12px;
@@ -38,7 +38,7 @@
         
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
         
         .subtitle {
@@ -46,29 +46,13 @@
             opacity: 0.9;
         }
         
-        .editor-container {
-            display: flex;
-            flex-direction: column;
-            padding: 10px;
+        .preview-container {
+            padding: 30px;
         }
-        
-        @media (min-width: 768px) {
-            .editor-container {
-                flex-direction: row;
-            }
-        }
-        
-        .editor-panel {
-            flex: 1;
-            padding: 10px;
-        }
-        
-        
         
         #preview {
-            height: 500px;
-            overflow-y: auto;
-            padding: 20px;
+            min-height: 500px;
+            padding: 30px;
             border: 1px solid #ddd;
             border-radius: 8px;
             background-color: #f9f9f9;
@@ -77,10 +61,11 @@
         
         .panel-label {
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
             font-weight: 600;
             color: #4a6fa5;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            text-align: center;
         }
         
         /* Markdown styling */
@@ -169,102 +154,43 @@
             text-decoration: underline;
         }
         
-        .instructions {
-            background-color: #eef5ff;
-            padding: 20px;
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #d32f2f;
+            background-color: #ffebee;
             border-radius: 8px;
-            margin: 20px;
-            border-left: 4px solid #4a6fa5;
+            margin: 20px 0;
         }
         
-        .instructions h3 {
-            margin-top: 0;
-            color: #2c3e50;
-        }
-        
-        .instructions ul {
-            margin-bottom: 0;
-        }
-        
-        .instructions li {
-            margin-bottom: 8px;
+        .file-info {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #666;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Markdown Preview</h1>
-            <p class="subtitle">Type Markdown on the left, see formatted output on the right</p>
+            <h1>Class.md Preview</h1>
+            <p class="subtitle">Displaying content from Class.md file</p>
         </header>
         
-        <div class="instructions">
-            <h3>How to use this preview:</h3>
-            <ul>
-                <li>Edit the Markdown content on the left side</li>
-                <li>See the live preview update on the right side</li>
-                <li>All standard Markdown formatting is supported</li>
-                <li>Tables, code blocks, and links are fully rendered</li>
-            </ul>
-        </div>
-        
-        <div class="editor-container">
-            <div class="editor-panel">
-                <label for="editor" class="panel-label">Markdown Input</label>
-                <textarea id="editor"># 📚 Varsity Marathon Lectures - Complete Catalog
-
-## 🧬 Biology (Core + Extra)
-### Core Chapters
-| Chapter | Part 1 | Part 2 |
-|---------|--------|--------|
-| **Biology 01** | [1.1](https://www.youtube.com/embed/nDnG-idwxCU) | [1.2](https://www.youtube.com/embed/Y0ts8eVLPJg) |
-| **Biology 02** | [2.1](https://www.youtube.com/embed/tj9yRi-CIt8) | [2.2](https://www.youtube.com/embed/JWGMuAwoILo) |
-| **Biology 03** | [3.1](https://www.youtube.com/embed/1_YVvMVPxbo) | [3.2](https://www.youtube.com/embed/uXreLqnk4og) |
-
-### Extra Syllabus
-| Chapter | Part 1 | Part 2 |
-|---------|--------|--------|
-| **Extra Bio 11** | [E11.1](https://www.youtube.com/embed/I72HFwVn9oQ) | [E11.2] *Missing* |
-| **Extra Bio 12** | [E12.1](https://www.youtube.com/embed/6Ru62IMNxeU) | - |
-
-## ⚗️ Chemistry (Complete)
-| Chapter | Part 1 | Part 2 |
-|---------|--------|--------|
-| **Chemistry 01** | [1.1](https://www.youtube.com/embed/IHbFRTnHkzE) | [1.2](https://www.youtube.com/embed/MXODUXhYCQ4) |
-| **Chemistry 02** | [2.1](https://www.youtube.com/embed/CK-Xyft_fDo) | [2.2](https://www.youtube.com/embed/jEVauGneg0w) |
-
-## 🚀 Physics (Complete)
-| Chapter | Part 1 | Part 2 |
-|---------|--------|--------|
-| **Physics 01** | [1.1](https://www.youtube.com/embed/eFeoQ1OQXvY) | [1.2](https://www.youtube.com/embed/ObPuMi-JzX4) |
-| **Physics 02** | [2.1](https://www.youtube.com/embed/4Gk6JfjXeiA) | [2.2](https://www.youtube.com/embed/gr-wrg02UsQ) |
-
-## ➗ Higher Math (Complete)
-| Chapter | Part 1 | Part 2 |
-|---------|--------|--------|
-| **Math 01** | [1.1](https://www.youtube.com/embed/WKvoYRMujYU) | [1.2](https://www.youtube.com/embed/vHKaXFQrfIU) |
-| **Math 02** | [2.1](https://www.youtube.com/embed/Z9fui8p0zXs) | [2.2](https://www.youtube.com/embed/__Zz0BUFG-8) |
-
-## 🌐 ICT
-| Chapter | Part 1 | Part 2 |
-|---------|--------|--------|
-| **ICT 01** | [1.1](https://www.youtube.com/embed/VjaCCELzzJs) | [1.2](https://www.youtube.com/embed/Q8IfFL1QSwQ) |
-| **ICT 02** | [2.1](https://www.youtube.com/embed/hJKkdRivYec) | - |
-
-## 🧠 Special Lectures
-| Lecture | Link |
-|---------|------|
-| **Mental Ability** | [MA-01](https://www.youtube.com/embed/_4JcZ4NPuTY) |
-
-## 📌 Missing Lectures
-1. Extra Biology 11 Part 2
-2. ICT 02 Part 2
-3. ICT 03 Part 2</textarea>
-            </div>
-            
-            <div class="editor-panel">
-                <label class="panel-label">Live Preview</label>
-                <div id="preview"></div>
+        <div class="preview-container">
+            <span class="panel-label">Preview</span>
+            <div class="file-info">Loading content from: <span id="filename">Class.md</span></div>
+            <div id="preview">
+                <div class="loading">
+                    <p>Loading content from Class.md...</p>
+                </div>
             </div>
         </div>
     </div>
@@ -273,20 +199,42 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         // Get elements
-        const editor = document.getElementById('editor');
         const preview = document.getElementById('preview');
+        const filenameElement = document.getElementById('filename');
         
-        // Function to update preview
-        function updatePreview() {
-            const markdownText = editor.value;
-            preview.innerHTML = marked.parse(markdownText);
+        // Function to load and render markdown file
+        async function loadMarkdownFile() {
+            const filename = 'Class.md';
+            filenameElement.textContent = filename;
+            
+            try {
+                // Try to fetch the Class.md file
+                const response = await fetch(filename);
+                
+                if (!response.ok) {
+                    throw new Error(`File not found: ${response.status} ${response.statusText}`);
+                }
+                
+                const markdownText = await response.text();
+                
+                // Render the markdown content
+                preview.innerHTML = marked.parse(markdownText);
+                
+            } catch (error) {
+                // Display error message if file cannot be loaded
+                preview.innerHTML = `
+                    <div class="error">
+                        <h3>Error Loading File</h3>
+                        <p>${error.message}</p>
+                        <p>Please make sure "Class.md" exists in the same directory as this HTML file.</p>
+                    </div>
+                `;
+                console.error('Error loading markdown file:', error);
+            }
         }
         
-        // Set up event listener
-        editor.addEventListener('input', updatePreview);
-        
-        // Initial preview
-        updatePreview();
+        // Load the markdown file when page loads
+        document.addEventListener('DOMContentLoaded', loadMarkdownFile);
     </script>
 </body>
 </html>
